@@ -6,10 +6,15 @@ These scripts were executed using the Texas A&M High Preformance Research Comput
 # Filtering SNPs 
 [:file_folder:](https://github.com/edegreef/PUMA-SNPs/tree/master/filter)
 
-Primary input file is SNPs in vcf format. I also had scaffolds_read_depths (for X reason), and a few other files for running R
+Primary input file:
+* SNPs in vcf format
+
+Separate files:
+* scaffolds_read_depths.csv (read depth information of the samples along the reference genome)
+* filter.hets.R (included in filter folder)
+* run_script.lsf (included in filter folder)
 
 1. Create list of CHROM and POS info from each SNP (used in downstream filtering steps for particular scaffolds)
-2. ID weird scaffolds with higher read depths, using list from step1 and info from scaffolds_read_depths file (separate)
+2. ID scaffolds that are "weird" (with abnormally high read depths), Z-linked, and W-linked, using the list_all from step1 and scaffolds_read_depths file. Lists created from this step are used in filtering steps (step3 & 4)
 3. Filter SNPs based on quality (indels, minimum allele frequency, missing genotypes, Hardy-Weinberg Equilibrium, triallelic, and weird/high read depths)
-4. Identify sex-linked scaffolds using FST and read depths between males and females
-5. Filter SNPs to create files for autosomes, Z chromosome, W chromosome, and separate files for geolocator birds and population birds.
+4. Filter SNPs to create files for autosomes, Z chromosome, W chromosome, and separate files for geolocator birds and population birds.
