@@ -1,0 +1,6 @@
+#Quick step to make list of snp positions from vcf file (keeping "CHROM" and "POS" info)
+#This is for later creating lists of subsets to use in vcftools --exclude-positions
+
+awk '{print $1, $2}' imputed.vcf > list_all
+
+#then use nano to edit header so it only says "CHROM POS" on top- helps it read easier in R
