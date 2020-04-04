@@ -11,5 +11,5 @@ Primary input file is SNPs in vcf format. I also had scaffolds_read_depths (for 
 1. Create list of CHROM and POS info from each SNP (used in downstream filtering steps for particular scaffolds)
 2. ID weird scaffolds with higher read depths, using list from step1 and info from scaffolds_read_depths file (separate)
 3. Filter SNPs based on quality (indels, minimum allele frequency, missing genotypes, Hardy-Weinberg Equilibrium, triallelic, and weird/high read depths)
-4. Identify sex-linked scaffolds
+4. Identify sex-linked scaffolds using FST and read depths between males and females
 5. Filter SNPs to create files for autosomes, Z chromosome, W chromosome, and separate files for geolocator birds and population birds.
