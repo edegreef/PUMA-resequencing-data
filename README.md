@@ -18,3 +18,14 @@ Separate files:
 2. ID scaffolds that are "weird" (with abnormally high read depths), Z-linked, and W-linked, using the list_all from step1 and scaffolds_read_depths file. Lists created from this step are used in filtering steps (step3 & 4)
 3. Filter SNPs based on quality (indels, minimum allele frequency, missing genotypes, Hardy-Weinberg Equilibrium, triallelic, and weird/high read depths)
 4. Filter SNPs to create files for autosomes, Z chromosome, W chromosome, and separate files for geolocator birds and population birds.
+
+
+
+# FST
+in prog
+
+# PCA
+in prog
+
+# GWAS
+in prog
