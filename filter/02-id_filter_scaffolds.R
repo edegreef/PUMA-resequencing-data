@@ -6,7 +6,7 @@ setwd("E:/Evelien's Dropbox/Dropbox/PUMA/Bioinformatics/scaffold_filter")
 #list of all scaffolds & positions of vcf file
 list_all <- read.table("list_all", header=T)
 
-#Scaffold read depths between males and females were obtained using raw bam files and reference genome
+#Scaffold read depths between males and females were obtained using raw fastq files and reference genome
 data <- read.csv("scaffold_read_depths.csv")
 data <- select(data,
                scaffold,
