@@ -16,6 +16,7 @@ Separate files:
 
 1. Create list of CHROM and POS info from each SNP (used in downstream filtering steps for particular scaffolds)
 2. ID scaffolds that are "weird" (with abnormally high read depths), Z-linked, and W-linked, using the list_all from step1 and scaffolds_read_depths file. Lists created from this step are used in filtering steps (step3 & 4)
+UPDATE::: ended up using FST for male/females to filter out sex-linked scaffolds.
 3. Filter SNPs based on quality (indels, minimum allele frequency, missing genotypes, Hardy-Weinberg Equilibrium, triallelic, and weird/high read depths)
 4. Filter SNPs to create files for autosomes, Z chromosome, W chromosome, and separate files for geolocator birds and population birds.
 
