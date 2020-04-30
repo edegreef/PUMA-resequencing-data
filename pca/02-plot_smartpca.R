@@ -1,5 +1,7 @@
 library(ggplot2)
 
+setwd("C:/Users/Evelien de Greef/Dropbox/PUMA/Bioinformatics/reseq/PCA")
+
 #load evec txt from smartPCA output
 evec <- read.table("smartpca.run1_67_auto.evec.txt") 
 
