@@ -12,7 +12,7 @@ PUMAPCA <- ggplot(data=evec, aes(x=evec[,2],y=evec[,3], colour=factor(V12)))+
   ggtitle("PUMA PCA")+
   theme(plot.title = element_text(hjust = 0.5))+
   labs(x="eigenvector1", y="eigenvector2")
-print(PUMAPCA + labs(colour="Population"))
+print(PUMAPCA + labs(colour="V12"))
 
 
 # +geom_text(aes(label=evec$V1)) #add this to ggplot for sample ID to each point
