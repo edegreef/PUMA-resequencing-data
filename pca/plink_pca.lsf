@@ -1,0 +1,19 @@
+#BSUB -L /bin/bash              
+#BSUB -J pca
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 12:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/reseq/PCA/plink
+
+#convert vcf to bed, bim, fam
+/general/home/edegreef/plink/plink --vcf imputed.qualityfiltered.ZWout.pop67.recode.vcf --make-bed --allow-extra-chr --set-missing-var-ids @:#\$1,\$2 --out PUMApops_auto
+
+#plink PCA
+/general/home/edegreef/plink/plink --bfile PUMApops_auto --pca
