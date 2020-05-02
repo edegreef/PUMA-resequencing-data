@@ -1,0 +1,17 @@
+#BSUB -L /bin/bash              
+#BSUB -J admixCV
+#BSUB -n 1
+#BSUB -R "span[ptile=1]" 
+#BSUB -R "rusage[mem=5000]"
+#BSUB -M 5000
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/reseq/admixture
+module load ADMIXTURE/1.3.0
+for K in 1 2 3 4
+do admixture --cv 67_auto.bed $K | tee log${K}.out
+done
