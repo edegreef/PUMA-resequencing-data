@@ -1,5 +1,7 @@
 #!/usr/bin/Rscript
 
+setwd("E:/Evelien's Dropbox/Dropbox/PUMA/Bioinformatics/reseq/FST")
+
 #trying to plot distance ~ fst to show IBD
 
 data <- read.csv("fst_distance.csv", header=TRUE) #file with colony pairs and lat long coordinates and fst values
