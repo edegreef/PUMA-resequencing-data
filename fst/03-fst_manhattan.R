@@ -4,7 +4,7 @@
 setwd("C:/Users/Evelien de Greef/Dropbox/PUMA/Bioinformatics/reseq/FST")
 
 fst <- read.table("FL_vs_TX_auto.67.LD.windowed.weir.fst", header=T) #fst data
-scafs <- read.csv("/Users/Evelien de Greef/Dropbox/PUMA/Bioinformatics/reseq/gemma/purple_scafs_ordered_by_chicken.csv") #scaffold/chr info
+scafs <- read.csv("purple_scafs_ordered_by_chicken.csv") #scaffold/chr info
 scafs$id <- 1:nrow(scafs)
 scafs$purple_scaf <- gsub("Q","",scafs$purple_scaf)
 
