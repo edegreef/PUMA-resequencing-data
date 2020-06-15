@@ -3,7 +3,6 @@
 setwd("E:/Evelien's Dropbox/Dropbox/PUMA/Bioinformatics/reseq/FST")
 
 #trying to plot distance ~ fst to show IBD
-
 data <- read.csv("fst_distance.csv", header=TRUE) #file with colony pairs and lat long coordinates and fst values
 
 library(tidyverse)
@@ -41,3 +40,21 @@ IBD <- ggplot(data, aes(x=distancekm,y=fst))+
   stat_poly_eq(formula=y~x, aes(label=paste(..eq.label.., ..rr.label.., sep="~~~")), parse=TRUE)
 
 IBD
+
+##### Mantel's test to compare FST with distance, latitutde, and longitude
+#first inputting matrices for each variable 
+dist_data <- read.csv("pop_distance_matrix.csv")
+fst_data <- read.csv("pop_fst_matrix.csv")
+lat_data <- read.csv("pop_latitude_matrix.csv")
+long_data <- read.csv("pop_longitude_matrix.csv")
+
+library(ade4)
+
+dist_dist <- dist(dist_data)
+fst_dist <- dist(fst_data)
+lat_dist <- dist(lat_data)
+long_dist <- dist(long_data)
+
+distance_mantel <- mantel.rtest(dist_dist, fst_dist, nrepet=9999)
+latitude_mantel <- mantel.rtest(lat_dist, fst_dist, nrepet=9999)
+longitude_mantel <- mantel.rtest(long_dist, fst_dist, nrepet=9999)
