@@ -3,7 +3,7 @@
 #Script for getting all FST values among the 4 Purple Martin populations (AB, PA, TX, FL)
 #Need to include lists per population containing sample IDs.
 
-input_vcf=/scratch/user/edegreef/reseq/filter_scaffolds/imputed.qualityfiltered.ZWout.pop.recode.vcf #autosomes
+input_vcf=/scratch/user/edegreef/reseq/filter_scaffolds/imputed.qualityfiltered.LD.ZWout.pop.recode.vcf #autosomes
 type=auto
 
 module load VCFtools/0.1.16-intel-2018b-Perl-5.28.0
