@@ -3,7 +3,7 @@ library(tidyverse)
 ######## Setting up input files
 setwd("E:/Evelien's Dropbox/Dropbox/PUMA/Bioinformatics/scaffold_filter")
 
-#list of all scaffolds & positions of vcf file
+#list of all scaffolds & positions for each SNP, created earlier with: awk '{print $1, $2}' imputed.vcf > list_all
 list_all <- read.table("list_all", header=T)
 
 #Scaffold read depths between males and females were obtained using raw fastq files and reference genome
