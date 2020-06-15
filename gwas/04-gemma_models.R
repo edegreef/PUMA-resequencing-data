@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/Rscript
 
 ################# BSLMM
 #Merging BSLMM outputs for analyses - code largely based off kdelmore's script
