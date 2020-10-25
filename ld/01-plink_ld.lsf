@@ -1,0 +1,16 @@
+#BSUB -L /bin/bash              
+#BSUB -J plink_LD
+#BSUB -n 1
+#BSUB -R "span[ptile=1]" 
+#BSUB -R "rusage[mem=5000]"
+#BSUB -M 5000
+#BSUB -W 1:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+#calculating linkage disequilibrium from vcf file
+vcf_file=imputed.qualityfiltered.geobirds87.recode.vcf
+
+/general/home/edegreef/plink/plink --allow-extra-chr --ld-window 999999 --ld-window-kb 100 --ld-window-r2 0 --out geobirds87_ld --r2 --thin 0.01 --vcf $vcf_file
