@@ -1,0 +1,9 @@
+#downloaded 'msmc-tools' from https://github.com/stschiff/msmc-tools
+#download 'msmc2' from https://github.com/stschiff/msmc2/releases/tag/v2.0.0
+#download 'GEM' from https://github.com/Chimera-tools/ChimPipe/tree/master/bin/gemtools-1.7.1-i3
+
+#prior to running pipeline, need to index bams and also check mean coverage of bam files
+samtools index $input_bam
+
+module load SAMtools/1.10-iccifort-2019.5.281
+samtools depth $input_bam | awk '{sum += $3} END {print sum / NR}'
