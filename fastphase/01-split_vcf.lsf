@@ -1,0 +1,23 @@
+#BSUB -L /bin/bash              
+#BSUB -J split_vcf
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+list=list_scaf_all
+module load VCFtools/0.1.16-intel-2018b-Perl-5.28.0
+
+cd /scratch/user/edegreef/reseq/fastphase
+mkdir split_vcf_all
+
+while read scaffold
+do
+	vcftools --vcf imputed.qualityfiltered.geobirds87.recode.vcf --chr $scaffold --recode --recode-INFO-all --out split_vcf_all/imputed.qualityfiltered.87.$scaffold
+done < $list
+ 
