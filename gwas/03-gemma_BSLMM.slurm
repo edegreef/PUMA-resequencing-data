@@ -18,6 +18,8 @@ file=SD.allchrom.89
 /general/home/edegreef/gemma-0.98.1-linux-static -bfile $file -gk 1 -miss 1 -maf 0 -notsnp -o relatedness_matrix
 
 #running BSLMMs
+#remember to change -bslmm flag to 3 if running a categorical/binary phenotype
+
 /general/home/edegreef/gemma-0.98.1-linux-static -bfile $file -k output/relatedness_matrix.cXX.txt -miss 1 -maf 0 -notsnp -bslmm 1 -w 5000000 -s 20000000 -rpace 100 -wpace 1000 -hmin 0 -hmax 1 -rmin 0 -rmax 1 -o $file.bslmm_1
 echo "done first gemma run"
 
