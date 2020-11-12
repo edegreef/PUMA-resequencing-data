@@ -4,7 +4,7 @@
 
 #need to have the fastphase_subpoplabels.inp file in the working directory (space delimited file with pop info)
 
-list=list_scaf_all
+list=list_scaf_min1MB
 job="fastphase"
 
 mkdir fastphase_input_all
@@ -19,7 +19,7 @@ echo "#BSUB -L /bin/bash
 #BSUB -R "span[ptile=8]" 
 #BSUB -R "rusage[mem=2500]"
 #BSUB -M 2500
-#BSUB -W 24:00
+#BSUB -W 12:00
 #BSUB -o stdout.%J."$scaffold".fastphase.err
 #BSUB -e stderr.%J."$scaffold".fastphase.out
 
