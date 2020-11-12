@@ -1,0 +1,25 @@
+#BSUB -L /bin/bash              
+#BSUB -J fastphase2vcf
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+#converting fastphase to vcf: needs .geno file, hapguess_switch.out file, and original vcf as inputs. 
+
+blocks=1 #number of contigs in each vcf
+list=list_scaf_min1MB
+
+cd /scratch/user/edegreef/reseq/fastphase
+mkdir phased_vcf
+
+while read scaffold
+do
+	perl fastPHASE2VCF.pl fastphase_input/$scaffold.87.geno fastphase_output/$scaffold.87_hapguess_switch.out split_vcf/imputed.qualityfiltered.87.$scaffold.recode.vcf phased_vcf/$scaffold.87.phased.vcf $blocks
+	
+done < $list
