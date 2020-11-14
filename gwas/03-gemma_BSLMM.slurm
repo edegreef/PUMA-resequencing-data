@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --export=NONE
 #SBATCH --get-user-env=L
-#SBATCH --job-name=gemma_run_bslmm
+#SBATCH --job-name=gemma_bslmm_spring
 #SBATCH --time=24:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
@@ -11,8 +11,8 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=edegreef@ucdavis.edu 
 
-cd /scratch/user/edegreef/gemma/SD_allchrom_89
-file=SD.allchrom.89
+cd /scratch/user/edegreef/gemma/spring
+file=spring_rank_87_residuals 
 
 #making relatedness matrix
 /general/home/edegreef/gemma-0.98.1-linux-static -bfile $file -gk 1 -miss 1 -maf 0 -notsnp -o relatedness_matrix
