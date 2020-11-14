@@ -2,7 +2,7 @@
 
 #ordering bslmms and lmms for manhattan plots
 
-#### transferring over scaffold/chromosome info to dataframe
+#1) transferring over scaffold/chromosome info to dataframe
 
 snplist <- read.csv("imputed.qualityfiltered.snplist.CHROM.POS.orderchr.csv") #load snp list with chrom info
 data <- read.csv("geobirds87.ZWoutall.springresid_para.csv", header=T) 
@@ -28,7 +28,7 @@ data_updated <- select(data_updated, -10, -11, -12, -13) #para
 write.csv(data_updated, paste(id,".orderchr.csv",sep=""))
 
 
-#### rearranging by chromosome order
+#2) rearranging by chromosome order
 
 summary(data_updated$orientation)
 
@@ -116,7 +116,7 @@ chr_combined <- rbind(chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr1
 write.csv(chr_combined, paste(id,".orderchr.bpordered.csv",sep=""))
 
 
-#### making manhattan plots
+#3) making manhattan plots
 
 library(qqman)
 
