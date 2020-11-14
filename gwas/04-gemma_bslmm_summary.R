@@ -1,10 +1,11 @@
 #!/usr/bin/Rscript
 
-################# BSLMM
-#Merging BSLMM outputs for analyses - code largely based off kdelmore's script
-id="SA.allchrom.89"
+## author: kira delmore, modified by evelien de greef
 
-gemma.files <- list.files(pattern="SA.allchrom.89")
+# merging BSLMM outputs for analyses
+id="spring.rank.resid.autosomes.87"
+
+gemma.files <- list.files(pattern="spring.rank.resid.autosomes.87")
 hyp.files<-grep(".hyp.txt",gemma.files,value=TRUE)
 para.files<-grep(".param.txt",gemma.files,value=TRUE)
 
@@ -98,22 +99,3 @@ write.table(sparse.effects, paste0(id,"_sparse.txt",sep=""), quote=FALSE, row.na
 write.table(top1snp.effects, paste0(id,"_top1SNPs.txt",sep=""), quote=FALSE, row.names=FALSE, sep="\t")
 write.table(top0.1snp.effects, paste0(id,"_top0.1SNPs.txt",sep=""), quote=FALSE, row.names=FALSE, sep="\t")
 write.table(top0.01snp.effects, paste0(id,"_top0.01SNPs.txt",sep=""), quote=FALSE, row.names=FALSE, sep="\t")
-
-
-
-################# LMM
-library(ggplot2)
-
-data<-read.table("SA.allchrom.covMF.LD.QN.89.lmm.assoc.txt",h=T)
-data$id <- 1:nrow(data)
-
-# quick plot, will make nicer plot later
-png(filename="SA.allchrom.89.covMF.lmm.png")
-plot(data$id,-log10(data$p_wald),col=as.factor(data$chr), main="spring arrive - all chrom 89 indiv")
-dev.off()
-
-# checking to see if any SNPs are a sign
-data$padj <- p.adjust(data$p_wald)
-plot(data$id, data$padj)
-data_adjusted <- data[data$padj != 1, ] 
-write.csv(data_adjusted,'specialSNP.SA.allchrom.89.covMF.csv')
