@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --export=NONE
 #SBATCH --get-user-env=L
-#SBATCH --job-name=gemma_run_SD89_cov
+#SBATCH --job-name=gemma_run_spring
 #SBATCH --time=24:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=8
@@ -11,9 +11,9 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=edegreef@ucdavis.edu 
 
-cd /scratch/user/edegreef/gemma/SD_allchrom_89_cov
-file=SD.allchrom.89.cov
-cov=covMF.txt #optional covariate file
+cd /scratch/user/edegreef/gemma/spring
+file=spring_rank_87
+cov=cov5.sex.col.year.age.pc1.txt  #optional covariate file
 
 #making relatedness matrix
 /general/home/edegreef/gemma-0.98.1-linux-static -bfile $file -gk 1 -miss 1 -maf 0 -notsnp -o relatedness_matrix
