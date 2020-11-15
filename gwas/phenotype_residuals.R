@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #regressing out covariates from phenotype, and using residuals as corrected phenotype (for bslmms, which cannot take in a covariates file)
-
 #example below doing this for spring and fall migratory timing phenotypes
 
 data <- read.csv("./PUMA_sample_87_combined_phen.csv", header=T)
