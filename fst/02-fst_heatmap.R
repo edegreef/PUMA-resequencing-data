@@ -19,5 +19,4 @@ heatmap <- pheatmap(fst_matrix,
                     legend=TRUE,
                     main="FSTs with 4 pops",
                     na_col="white",
-                    filename="fst_heatmap.jpeg"  #this automatically saves in directory
-)
+                    filename="fst_heatmap.jpeg")
