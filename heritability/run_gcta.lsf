@@ -1,0 +1,20 @@
+#BSUB -L /bin/bash              
+#BSUB -J GCTA
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=5000]"
+#BSUB -M 5000
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/reseq/GCTA
+
+#make GRM
+/general/home/edegreef/gcta_1.93.2beta/gcta64 --bfile imputed.qualityfiltered.geobirds87.recode.renamedchr.test2 --maf 0.05 --make-grm --out test2 --thread-num 8 --autosome-num 32
+
+#run gcta
+/general/home/edegreef/gcta_1.93.2beta/gcta64 --grm test2 --pheno spring_rank_phen.txt --covar covar4discrete.txt --qcovar covarq3.txt --out test2.herit --reml --reml-alg 
+

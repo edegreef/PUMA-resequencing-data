@@ -1,0 +1,33 @@
+#BSUB -L /bin/bash              
+#BSUB -J bcf_renamechr_chr1test
+#BSUB -n 1
+#BSUB -R "span[ptile=1]" 
+#BSUB -R "rusage[mem=5000]"
+#BSUB -M 5000
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/reseq/GCTA
+
+#first need to include the vcf header stuff (using nano)
+##INFO=<ID=AR2, Number=1, Type=Float>
+##INFO=<ID=DR2, Number=1, Type=Float>
+##INFO=<ID=AF, Number=1, Type=Float>
+##FORMAT=<ID=GT, Number=1, Type=String>
+##FORMAT=<ID=DS, Number=1, Type=String>
+##FORMAT=<ID=GP, Number=1, Type=String>
+
+#then need to generate gz file and index
+bgzip -c geobirds87.chr1.scafs.recode.vcf > geobirds87.chr1.scafs.recode.vcf.gz 
+tabix -p vcf geobirds87.chr1.scafs.recode.vcf.recode.vcf.gz
+
+module load BCFtools/1.10.2-iccifort-2019.5.281
+
+bcftools annotate -c CHROM,POS -a CHROM.ch1.renamed.list.txt geobirds87.chr1.scafs.recode.vcf.recode.vcf.gz - geobirds87.chr1.scafs.recode.vcf.recode.renamedchrpos.vcf
+
+#also make the bam, bim, and fam files to prep for gcta
+#/general/home/edegreef/plink/plink --vcf imputed.qualityfiltered.geobirds87.recode.renamedchr.vcf --make-bed --allow-extra-chr --out imputed.qualityfiltered.geobirds87.recode.renamedchr
+
