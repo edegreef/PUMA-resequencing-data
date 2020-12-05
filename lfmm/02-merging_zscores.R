@@ -1,5 +1,4 @@
 #Merging .zscore outputs from lfmm models, using tutotial from: http://membres-timc.imag.fr/Olivier.Francois/lfmm/files/note.pdf
-#Then plotting the lfmm as manhattan plot using R-package qqman
 
 setwd("C:/Users/Evelien de Greef/Dropbox/PUMA/Bioinformatics/reseq/lfmm/bloom77_noprune/5cov")
 
