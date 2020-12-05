@@ -1,0 +1,16 @@
+#BSUB -L /bin/bash              
+#BSUB -J lfmm1
+#BSUB -n 8
+#BSUB -R "span[ptile=8]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 168:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/reseq/lfmm_run2
+module load R/3.6.2-intel-2019b-recommended-mt
+
+R --vanilla < lea_lfmm1.R
