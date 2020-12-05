@@ -7,7 +7,16 @@ The _filter_ folder contains code for steps in filtering snps. The order is base
 <br/>
 # Analyses
 
-* **Population genomics**: _admixture_ for looking at ancestry; _fst_ to examine population differentiation; and _pca_ for population structure
-* **Demographic history**: _fastphase_ to phase data to prep for msmc; _msmc_ to run demographic history analysis
-* **Genome-wide associations**: _gwas_ for running lmms and bslmms with GEMMA, ordering chromosomes and plotting, running ETI, and regressing out covariates in phenotype for specific models to include covariates in bslmm; _heritability_ for plotting PVE, PGE, n_gamma outputs from GEMMA; _lfmm_ for running lfmms with LEA 
-* **Other**: _ld_ for characterizing linkage disequilirium
+**Population genomics**: 
+* _admixture_ for looking at ancestry 
+* _fst_ to examine population differentiation
+* _pca_ for population structure<br/>
+**Demographic history**:
+* _fastphase_ to phase data to prep for msmc
+* _msmc_ to run demographic history analysis<br/>
+**Genome-wide associations**:
+* _gwas_ for running lmms and bslmms with GEMMA, ordering chromosomes and plotting, running ETI, and regressing out covariates in phenotype for specific models to include covariates in bslmm
+* _heritability_ for plotting PVE, PGE, n_gamma outputs from GEMMA
+* _lfmm_ for running lfmms with LEA <br/>
+**Other**:
+* _ld_ for characterizing linkage disequilirium
