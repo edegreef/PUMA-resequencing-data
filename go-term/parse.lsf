@@ -1,0 +1,32 @@
+#BSUB -L /bin/bash              
+#BSUB -J parse
+#BSUB -n 4
+#BSUB -R "span[ptile=4]" 
+#BSUB -R "rusage[mem=2500]"
+#BSUB -M 2500
+#BSUB -W 24:00
+#BSUB -o stdout.%J
+#BSUB -e stderr.%J 
+#BSUB -u edegreef@ucdavis.edu
+#BSUB -B -N
+
+cd /scratch/user/edegreef/ref_genome/annotation/parse
+
+cat PUMA2_03022020_round4.proteins.tsv | awk '{print $1}' |sort -u > Ids_from_Interproscan.txt
+while read interproid
+        do echo -e "\n$interproid"
+        grep $interproid Species_maker*.tsv | awk '{print $1,$4,$5}' | sort -u > fileINTER.$interproid
+        grep $interproid Species_maker*.tsv | awk 'match($0,/IPR/) {print "'$interproid'","_",substr($0,RSTART)}'|sort -u >> fileINTER.$interproid
+                for db in CDD Gene3D Hamap PANTHER Pfam PIRSF PRINTS ProDom ProSitePatterns ProSiteProfiles SMART SUPERFAMILY TIGRFAM IPR
+                        do grep $db fileINTER.$interproid | awk '{$1=$2=""; print $0}' | sort -u | awk '{print "'$db:'"$0}' | tr '\n' ',' | sed 's/:  /-/'g | sed 's/GO:........//g'
+                done
+done < Ids_from_Interproscan.txt > Parsed_INTERPROSCAN_Species.txt
+sed -i '/^$/d' Parsed_INTERPROSCAN_Species.txt
+rm  fileINTER.*
+
+while read interproid
+        do echo -e "\n$interproid"
+        grep $interproid Species_maker*.tsv | grep -o GO:....... | sort -u | tr '\n' '|'
+done < Ids_from_Interproscan.txt > GOs_Interpro_Species.txt
+sed -i '1d' GOs_Interpro_Species.txt
+paste Parsed_INTERPROSCAN_Species.txt GOs_Interpro_Species.txt > INTERPROSCAN_Species.table
