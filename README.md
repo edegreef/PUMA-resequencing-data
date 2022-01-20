@@ -13,8 +13,8 @@ The _filter_ folder contains code for steps in filtering snps. The order is base
 * _pca_ for population structure  
 
 **Demographic history**:
-* _fastphase_ to phase data to prep for msmc
-* _msmc_ to run demographic history analysis  
+* _fastphase_ to phase data to prep for msmc to test runs with groups of multiple individuals
+* _msmc_ to run demographic history analysis, incuding bootstrapping 
 
 **Genome-wide associations**:
 * _gwas_ for running lmms and bslmms with GEMMA, ordering chromosomes and plotting, running ETI, and regressing out covariates in phenotype for specific models to include covariates in bslmm
