@@ -21,7 +21,7 @@ The _filter_ folder contains code for steps in filtering snps. The order is base
 * _fst_ for differentiation across genome
 * _heritability_ for plotting PVE, PGE, n_gamma outputs from GEMMA. The actual code for caluclating heritability comes with the bslmms models in _gwas_.The `01-plot_pves.R` is really the only code relavent here for plotting, but the folder contains other code when I was trying out GCTA
 * _lfmm_ for running lfmms with LEA  
-* Polygenic Scores code by Matt Thorstensen: https://github.com/BioMatt/PUMA_PGS
+* Polygenic score code and polygenic score accuracy code by Matt Thorstensen: https://github.com/BioMatt/PUMA_PGS
 
 **Other**:
 * _ld_ for characterizing linkage disequilibrium
